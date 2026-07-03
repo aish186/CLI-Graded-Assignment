@@ -1,0 +1,24 @@
+1. USERNAME AND GROUPS
+--------------------------
+Observation:
+The 'whoami' command displays the currently logged-in username. The 'groups' command shows all groups theuser belongs to. Group membership determines what files and resources the user can access on the system.
+
+2. CURRENT SHELL
+------------------------
+Observation:
+The $SHELL variable stores the path to the default shell program. The output /bin/bash confirms that Bash (Bourne Again Shell) is being used, which is the most common shell in Linux environments.
+
+3. CURRENT WORKING DIRECTORY
+------------------------------------
+Observation:
+The 'pwd' (Print Working Directory) command shows the full path of the directory you are currently in. This is important to confirm you are working in the correct location before executing other commands.
+
+4. FILES AND DIRECTORIES IN WORKSPACE
+-----------------------------------------
+Observation:
+The 'ls -la' command lists all files and directories including hidden ones (starting with dot). It shows permissions, owner, file size, and last modified date. The -l flag gives detailed format and -a shows hidden files as well.
+
+5. NETWORK CONNECTIVITY
+--------------------------------
+Observation:
+The ping command sends 4 test packets to google.com to check network connectivity. A successful response with 0% packet loss confirms the system is connected to the internet and DNS resolution is working properly.

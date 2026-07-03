@@ -1,0 +1,29 @@
+
+1. OPEN FILES IDENTIFIED
+Observation:
+lsof (List Open Files) shows all files currently
+opened by the user. Every running process keeps
+files open including terminals, logs, and libraries
+
+
+2. FILE DESCRIPTOR OBSERVATIONS
+Observation:
+Every process has 3 default file descriptors:
+- FD 0 = stdin  (keyboard input)
+- FD 1 = stdout (screen output)
+- FD 2 = stderr (error output)
+These are how Linux handles all input/output.
+
+3. OUTPUT AND ERROR REDIRECTION
+Observation:
+> redirects standard output to a file.
+>> appends output without deleting existing content.
+2> redirects error messages to a separate file.
+2>&1 combines both output and errors into one file.
+
+4. RESOURCE LIMITS OBSERVED
+Observation:
+ulimit shows system resource limits per process.
+The "open files" limit shows max files a process
+can open at once (usually 1024). This is important
+for applications that handle many connections.

@@ -1,0 +1,52 @@
+STORAGE HEALTH ASSESSMENT REPORT
+==================================
+
+1. AVAILABLE STORAGE DEVICES
+------------------------------
+Command used: lsblk
+Output: [NAME MAJ:MIN RM   SIZE  RO TYPE MOUNTPOINTS
+         sda    8:0   0  388.4M   1 disk
+         sdb    8:16  0    186M   1 disk
+         sdc    8:32  0      1G   0 disk [SWAP]
+         sdd    8:48  0      1T   0 disk /mnt/wslg/distro]
+
+
+2. MOUNTED FILE SYSTEMS
+-------------------------
+Command used: df -h
+Output: [Filesystem      Size  Used Avail Use% Mounted on
+         /dev/sdd       1007G  1.4G 955G    1% /
+         rootfs          1.9G  2.7M 1.9G    1% /init]
+
+
+3. DISK USAGE STATISTICS
+--------------------------
+Command used: du -sh ~
+Output: [/home/aishwarya]
+
+
+4. INODE UTILIZATION
+----------------------
+Command used: df -i
+Output: [Filesystem     Inodes   IUsed    IFree  IUse% Mounted on
+         /dev/sdd     67108864   44974 67063890     1% /
+         rootfs         483895      12   483883     1% /init]
+
+
+5. STORAGE HEALTH OBSERVATIONS
+--------------------------------
+- Disk usage appears normal and healthy
+- No filesystem is critically full (above 90%)
+- Inode usage is within acceptable limits
+- All partitions are properly mounted
+- System storage is sufficient for application
+  deployment
+
+6. RECOMMENDATIONS FOR STORAGE IMPROVEMENT
+--------------------------------------------
+- Regularly monitor disk usage using df -h
+- Clean up temporary files using: sudo apt clean
+- Archive old log files to free up space
+- Set up disk usage alerts above 80% threshold
+- Use du -sh /* to find large directories
+- Consider adding storage if usage exceeds 70%

@@ -1,0 +1,67 @@
+LINK ANALYSIS REPORT
+=====================
+
+1. INODE NUMBERS
+-----------------
+original.txt inode:  [41983]
+hardlink.txt inode:  [41983]
+symlink.txt inode:   [41989]
+
+
+2. COMPARISON: HARD LINK vs SYMBOLIC LINK
+------------------------------------------
+Hard Link:
+- Same inode as original file
+- Points directly to data on disk
+- File survives even if original is deleted
+
+Symbolic Link:
+- Different inode number
+- Points to the filename/path, not the data
+- Breaks if original file is deleted
+
+3. EFFECT OF DELETING ORIGINAL FILE
+-------------------------------------
+After deleting original.txt:
+- cat hardlink.txt → still works, shows content 
+- cat symlink.txt  → ERROR: No such file 
+
+This proves hard links are safer than symbolic links
+for data protection.
+
+4. METADATA (from stat command)
+---------------------------------
+original.txt:  [File: original.txt
+                size: 26    Blocks: 8      IO Block: 4096   regular file
+                Device: 8,48   Inode: 41983   Links: 2
+                Access: (0644/-rw-r--r--) Uid: ( 1000/aishwarya)    Gid:( 1000/aishwarya)
+                Access: 2026-07-03 08:41:37.711431267 +0000
+                Modify: 2026-07-03 08:41:21.879435206 +0000
+                Change: 2026-07-03 08:42:47.515415131 +0000
+                Birth: 2026-07-03 08:41:21.879435206 +0000]
+hardlink.txt:  [File: hardlink.txt
+                size: 26    Blocks: 8     IO Block: 4096   regular file
+                Device: 8,48   Inode: 41983   Links: 2
+                Access: (0644/-rw-r--r--) Uid: ( 1000/aishwarya)    Gid:( 1000/aishwarya)
+                Access: 2026-07-03 08:41:37.711431267 +0000
+                Modify: 2026-07-03 08:41:21.879435206 +0000
+                Change: 2026-07-03 08:42:47.515415131 +0000
+                Birth: 2026-07-03 08:41:21.879435206 +0000]
+
+symlink.txt:   [[File: 'symlink.txt'-> 'original.txt'
+                size: 12    Blocks: 0     IO Block: 4096   symbolic file
+                Device: 8,48   Inode: 41983   Links: 1
+                Access: (0777/lrwxrwxrwx) Uid: ( 1000/aishwarya)    Gid:( 1000/aishwarya)
+                Access: 2026-07-03 08:41:37.843390779 +0000
+                Modify: 2026-07-03 08:41:21.471404404 +0000
+                Change: 2026-07-03 08:42:47.471404404 +0000
+                Birth:  2026-07-03 08:41:21.471404404 +0000]
+
+
+5. CONCLUSIONS
+---------------
+- Hard links share inode and survive original deletion
+- Symbolic links break when original is deleted
+- Hard links are safer for critical data backup
+- Symbolic links are useful for shortcuts/aliases
+- Both links update together when file is modified

@@ -1,0 +1,38 @@
+PROJECT WORKSPACE REPORT
+--------------------------
+
+1. Directory Structure Created:
+   ~/project_workspace/
+   ├── docs/
+   ├── files/
+   └── private/
+
+2. Permissions Before Modification:
+   [total 20
+    drwxr-хг-х 5 aishwarya aishwarya 4096 Jul 3 08:19 .
+    drwxr-х--- 6 aishwarya aishwarya 4096 Jul 3 08:10 ..
+    drwxr-хг-х 2 aishwarya aishwarya 4096 Jul 3 08:10 docs
+    drwxr-хг-х 2 aishwarya aishwarya 4096 Jul 3 08:11 files
+    drwxr-хг-х 2 aishwarya aishwarya 4096 Jul 3 08:19 private]
+
+3. Permissions After Modification:
+   [paste ls -la output from Step 7]
+   - private/ → 770 (only owner & group can access)
+   - docs/    → 750 (group can read, others cannot)
+   - files/   → 755 (others can read but not write)
+
+4. Ownership Details:
+   Owner: [aishwarya]
+   Group: [Aishwarya adm chrom sudo dip plug user]
+
+5. Umask Value Used: 0027
+   Explanation: Umask 0027 removes write permission
+   for group and all permissions for others by default.
+
+6. How Permissions Protect Project Data:
+   - chmod 770 on private/ means only the owner and
+     group members can read/write — outsiders blocked.
+   - chmod 750 on docs/ allows group to read but not
+     write, preventing accidental edits.
+   - Umask ensures any new files created are also 
+     restricted automatically.

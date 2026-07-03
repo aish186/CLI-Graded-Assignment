@@ -1,0 +1,18 @@
+LINK ANALYSIS OBSERVATIONS
+===========================
+
+
+1. Inode Numbers:
+When I ran `ls -li`, I noticed that original.txt and hardlink.txt had the exact same inode number. This means both names are pointing to the same data on the disk. symlink.txt had a different inode because it just points to the filename, not the actual data.
+
+2. Hard Link vs Symbolic Link:
+A hard link is like a second name for the same file — both share the same data. A symbolic link is more like a shortcut — it just points to where the original file is located.
+
+3. After Deleting Original File:
+After I deleted original.txt, hardlink.txt still worked perfectly and showed the content. But symlink.txt gave an error because the file it was pointing to no longer existed. This clearly shows the difference between the two.
+
+4. Metadata (stat command):
+The stat command showed detailed information like file size, creation time, last modified time, and inode number. Hard link showed same inode and size as original. Symlink showed a much smaller size since it only stores the path.
+
+5. Conclusion:
+From this experiment I learned that hard links are more reliable for keeping data safe. Symbolic links are useful as shortcuts but they break easily. Linux uses inodes to manage files internally, not just filenames.

@@ -1,0 +1,38 @@
+FILE ACCESS AND I/O INVESTIGATION REPORT
+==========================================
+
+1. OPEN FILES IDENTIFIED
+--------------------------
+Command used: lsof -u aishwarya
+output:[ COMMAND PID      USER  FD   TYPE  DEVICE  SIZE/OFF   NODE NAME
+        bash    371 aishwarya cwd    DIR    8,48      4096    734 /home/aishwarya
+        bash    371 aishwarya rtd    DIR    8,48      4096      2 /]
+
+2. FILE DESCRIPTOR OBSERVATIONS
+---------------------------------
+Command used: ls -la /proc/$$/fd
+Output: [total 0
+         dr-x------ 2 aishwarya aishwarya   5 Jul 3 09:41 .
+         dr-xr-xr-x 9 aishwarya aishwarya   0 Jul 3 09:40 .. ]
+
+
+3. OUTPUT AND ERROR REDIRECTION
+---------------------------------
+Commands used:
+- echo "text" > output.txt   (creates/overwrites)
+- echo "text" >> output.txt  (appends to file)
+- cat fakefile 2> error.txt  (redirects errors)
+- ls /home /fake > both.txt 2>&1 (both together)
+
+
+4. RESOURCE LIMITS OBSERVED
+-----------------------------
+Command used: ulimit -a
+Output: [real-time non-blocking time   (microseconds,  -R) unlimited
+         core file size               (blocks, -c) 0
+         data seg size                 (kbytes, -d) unlimited]
+
+
+5. HOW LINUX MANAGES FILE I/O
+-------------------------------
+Linux treats everything as a file — devices, pipes, network sockets, and regular files all use the same file descriptor system. When a process opens a file, the kernel assigns it a file descriptor number. All read/write operations use these descriptors. This unified approach makes Linux I/O very flexible and powerful for system administration tasks.

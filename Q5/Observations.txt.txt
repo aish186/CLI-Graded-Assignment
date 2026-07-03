@@ -1,0 +1,47 @@
+STORAGE HEALTH ASSESSMENT REPORT
+==================================
+
+
+1. AVAILABLE STORAGE DEVICES
+Command used: lsblk
+
+Observation:
+lsblk lists all block storage devices connected
+to the system including hard disks, partitions,
+and USB drives in a tree structure format.
+
+
+2. MOUNTED FILE SYSTEMS
+Command used: df -h
+Observation:
+df -h shows all mounted filesystems with their
+total size, used space, available space and mount
+point. The -h flag makes sizes human readable
+(KB, MB, GB instead of raw bytes).
+
+
+3. DISK USAGE STATISTICS
+Command used: du -sh ~
+Observation:
+du -sh shows total disk space used by the home
+directory. The -s flag gives summary total and
+-h makes it human readable. This helps identify
+which directories consume the most storage.
+
+
+4. INODE UTILIZATION
+Command used: df -i
+Observation:
+df -i shows inode usage for each filesystem.
+Inodes store file metadata like permissions and
+ownership. If inodes are 100% used, no new files
+can be created even if disk space is available.
+
+
+5. STORAGE HEALTH OBSERVATIONS
+- Disk usage appears normal and healthy
+- No filesystem is critically full (above 90%)
+- Inode usage is within acceptable limits
+- All partitions are properly mounted
+- System storage is sufficient for application
+  deployment
